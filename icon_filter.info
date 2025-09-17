@@ -1,0 +1,10 @@
+name = Icon Filter
+description = Insert icons into text.
+package = Content
+backdrop = 1.x
+type = module
+
+tags[] = content
+tags[] = filter
+tags[] = icons
+tags[] = embed

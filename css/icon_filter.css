@@ -1,0 +1,85 @@
+/**
+ * CSS
+ */
+
+.icon.icon-filter {
+  --width: 1em;
+  --height: 100%;
+  width: var(--width);
+  height: var(--height);
+}
+
+/* Relative sizing */
+.icon.icon-2xs {
+  --width: .625em;
+}
+.icon.icon-xs {
+  --width: .75em;
+}
+.icon.icon-sm {
+  --width: .875em;
+}
+.icon.icon-lg {
+  --width: 1.25em;
+}
+.icon.icon-xl {
+  --width: 1.5em;
+}
+.icon.icon-2xl {
+  --width: 2em;
+}
+
+/* Literal sizing */
+.icon.icon-1x {
+  --width: 1em;
+}
+.icon.icon-2x {
+  --width: 2em;
+}
+.icon.icon-3x {
+  --width: 3em;
+}
+.icon.icon-4x {
+  --width: 4em;
+}
+.icon.icon-5x {
+  --width: 5em;
+}
+.icon.icon-6x {
+  --width: 6em;
+}
+.icon.icon-7x {
+  --width: 7em;
+}
+.icon.icon-8x {
+  --width: 8em;
+}
+.icon.icon-9x {
+  --width: 9em;
+}
+.icon.icon-10x {
+  --width: 10em;
+}
+
+/* Flip and Rotate */
+.icon.icon-flip-horizontal {
+  transform: scale(-1, 1);
+}
+.icon.icon-flip-vertical {
+  transform: scale(1, -1);
+}
+.icon.icon-rotate-45 {
+  transform: rotate(45deg);
+}
+.icon.icon-rotate-90 {
+  transform: rotate(90deg);
+}
+.icon.icon-rotate-135 {
+  transform: rotate(135deg);
+}
+.icon.icon-rotate-180 {
+  transform: rotate(180deg);
+}
+.icon.icon-rotate-225 {
+  transform: rotate(225deg);
+}

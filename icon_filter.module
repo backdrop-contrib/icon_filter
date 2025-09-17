@@ -1,0 +1,92 @@
+<?php
+
+/**
+ * @file
+ * Icon Filter module
+ */
+
+/**
+ * Implements hook_filter_info().
+ */
+function icon_filter_filter_info() {
+  $filters['filter_icon'] = array(
+    'title' => t('Convert [icon:%iconname%] tags'),
+    'process callback' => '_icon_filter_icon',
+    'tips callback' => '_icon_filter_icon_tips',
+  );
+
+  return $filters;
+}
+
+/**
+ * Implements callback_filter_process().
+ *
+ * Converts icons like [icon:pencil] to their equivalent svg. Can also add
+ * classes: [icon:pencil class=red] or styles
+ * [icon:pencil style="color: cornflowerblue;"]
+ */
+function _icon_filter_icon($text, $filter, $format, $langcode, $cache, $cache_id) {
+  backdrop_theme_initialize();
+
+  $icons = array();
+  if (preg_match_all('/\[icon(\:(.+))?( .+)?\]/isU', $text, $matches, PREG_SET_ORDER)) {
+    foreach ($matches as $match) {
+      if (!isset($icons[$match[0]])) {
+        $attributes = array();
+
+        if ($match[3] && preg_match_all('/\s+([a-zA-Z]+)\=([0-9a-zA-Z";,:\-_]+)(\s+)?([a-zA-Z]+)?(\=)?([0-9a-zA-Z";:\-_]+)?/i', $match[3], $matches_attributes, PREG_SET_ORDER)) {
+          if (isset($matches_attributes[0][1]) && isset($matches_attributes[0][2])) {
+            $attributes[$matches_attributes[0][1]] = $matches_attributes[0][2];
+          }
+          if (isset($matches_attributes[0][4]) && isset($matches_attributes[0][6])) {
+            $attributes[$matches_attributes[0][4]] = $matches_attributes[0][6];
+          }
+        }
+        if (isset($attributes['class'])) {
+          $attributes['class'] = explode(',', $attributes['class']);
+          if (!is_array($attributes['class'])) {
+            $attributes['class'] = array($attributes['class']);
+          }
+        }
+        $attributes['class'][] = 'icon-filter';
+
+        if (isset($attributes['style'])) {
+          $attributes['style'] = trim($attributes['style'], '"');
+        }
+
+        $icons[$match[0]] = icon($match[2], array('attributes' => $attributes));
+      }
+    }
+  }
+  foreach ($icons as $search => $replace) {
+    if (!empty($replace)) {
+      $text = str_replace($search, $replace, $text);
+    }
+  }
+
+  return $text;
+}
+
+
+/**
+ * Implements callback_filter_tips().
+ *
+ * Provides help for the icon filter.
+ *
+ * @see filter_filter_info()
+ */
+function _icon_filter_icon_tips($filter, $format, $long = FALSE) {
+  if ($long) {
+    return t('Convert icon token like [icon:pencil] to inline svg.');
+  }
+  else {
+    return t('Convert icon token to inline svg.');
+  }
+}
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function icon_filter_preprocess_page(&$variables) {
+  backdrop_add_css(backdrop_get_path('module', 'icon_filter') . '/css/icon_filter.css');
+}
