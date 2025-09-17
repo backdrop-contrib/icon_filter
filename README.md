@@ -10,9 +10,9 @@ svg.
 
 Can also add:
 
-* classes: `[icon:pencil class=red]` or,
-* styles: `[icon:pencil style="color: cornflowerblue;"]`,
-* or both: `[icon:pencil class=icon-1x,icon-rotate-45 style="color: cornflowerblue;"]`
+* classes: `[icon:pencil class=icon-lg]` or,
+* styles: `[icon:pencil style="color: red;"]`,
+* or both: `[icon:pencil class=icon-1x,icon-rotate-45 style="color: red;"]`
 
 ## Built-in classes
 

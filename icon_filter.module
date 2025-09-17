@@ -22,8 +22,8 @@ function icon_filter_filter_info() {
  * Implements callback_filter_process().
  *
  * Converts icons like [icon:pencil] to their equivalent svg. Can also add
- * classes: [icon:pencil class=red] or styles
- * [icon:pencil style="color: cornflowerblue;"]
+ * classes: [icon:pencil class=icon-3x,icon-rotate-45] or styles
+ * [icon:pencil style="color: red;"]
  */
 function _icon_filter_icon($text, $filter, $format, $langcode, $cache, $cache_id) {
   backdrop_theme_initialize();
@@ -77,10 +77,10 @@ function _icon_filter_icon($text, $filter, $format, $langcode, $cache, $cache_id
  */
 function _icon_filter_icon_tips($filter, $format, $long = FALSE) {
   if ($long) {
-    return t('Convert icon token like [icon:pencil] to inline svg.');
+    return t('Convert <code>[icon:icon-name]</code> to inline svg. Can add classes and styles: <code>[icon:pencil class=icon-1x,icon-rotate-45 style="color: red;"]</code>.');
   }
   else {
-    return t('Convert icon token to inline svg.');
+    return t('Convert <code>[icon:icon-name]</code> to inline svg. Can add classes and styles: <code>[icon:pencil class=icon-1x,icon-rotate-45 style="color: red;"]</code>.');
   }
 }
 
