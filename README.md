@@ -2,9 +2,8 @@
 
 Integrates Backdrop's icon library into a text filter.
 
-Insert icons in a token like `[icon:pencil]` into text. When the icon filter is
-enabled on a text format then the token is converted to the equivalent inline
-svg.
+Insert icons into your text by using shortcodes like `[icon:pencil]`. When the icon filter is
+enabled on a text format then the token is converted to the equivalent inline svg.
 
 ## Basics
 
