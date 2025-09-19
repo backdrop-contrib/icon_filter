@@ -76,11 +76,15 @@ function _icon_filter_icon($text, $filter, $format, $langcode, $cache, $cache_id
  * @see filter_filter_info()
  */
 function _icon_filter_icon_tips($filter, $format, $long = FALSE) {
+  $icon_browser = '';
+  if (module_exists('icon_browser')) {
+    $icon_browser = t(' <a href="@url">Browse available icons</a>.', array('@url' => '/admin/config/media/icons/browse'));
+  }
   if ($long) {
-    return t('Convert <code>[icon:icon-name]</code> to inline svg. Can add classes and styles: <code>[icon:pencil class=icon-1x,icon-rotate-45 style="color: red;"]</code>.');
+    return t('Convert <code>[icon:icon-name]</code> to inline svg. Can add classes and styles: <code>[icon:pencil class=icon-1x,icon-rotate-45 style="color: red;"]</code>.') . $icon_browser;
   }
   else {
-    return t('Convert <code>[icon:icon-name]</code> to inline svg. Can add classes and styles: <code>[icon:pencil class=icon-1x,icon-rotate-45 style="color: red;"]</code>.');
+    return t('Convert <code>[icon:icon-name]</code> to inline svg. Can add classes and styles: <code>[icon:pencil class=icon-1x,icon-rotate-45 style="color: red;"]</code>.') . $icon_browser;
   }
 }
 

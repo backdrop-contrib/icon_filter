@@ -25,6 +25,9 @@ Can also add:
 
 Install this module using the [official Backdrop CMS instructions](https://backdropcms.org/guide/modules).
 
+The filter should come after the "Limit allowed HTML tags" and "Correct faulty
+and chopped off HTML" filters.
+
 ## Issues
 
 Bugs and Feature requests should be reported in the [Issue Queue](https://github.com/backdrop-contrib/icon_filter/issues).
